@@ -143,6 +143,8 @@ This version uses a swapped flag so it can stop early when the array is already 
 
 That early stop gives bubble sort a best case of `O(n)` when the input is already sorted or nearly sorted. In the average and worst cases, however, bubble sort still performs quadratic work because it may need many passes and many swaps. The main advantage is that it sorts in place and therefore uses only constant extra space.
 
+In this JavaScript version, the swap is done with a temporary variable and direct index assignment, so the array is updated in place. The demo in `main()` uses the spread operator to make copies such as `[...array]` before sorting, which keeps the original sample input unchanged for the other examples.
+
 ### Example/Demo
 
 ```text
@@ -177,6 +179,8 @@ Because of that structure, insertion sort is often much better on small inputs o
 Insertion sort is efficient on small or nearly sorted inputs because each key may need to move only a short distance before it reaches its correct position. When the array is already close to sorted, the shifting work is limited, which is why insertion sort has a best case of `O(n)`.
 
 Its average and worst-case runtime are still `O(n^2)` because in a poorly ordered array each new key may need to move past many earlier elements. Even so, the algorithm remains useful because it sorts in place, needs only `O(1)` extra space, and has a very simple structure.
+
+In JavaScript, the key part of the implementation is the `while` loop that shifts larger values to the right one position at a time. The algorithm does not call array helpers like `sort()`; instead, it relies on direct index updates so each move is easy to follow in the code.
 
 ### Example/Demo
 
@@ -213,6 +217,8 @@ Selection sort performs the same number of comparisons regardless of the input o
 
 Its main strengths are simplicity and low memory usage. The algorithm sorts in place, uses `O(1)` extra space, and performs relatively few swaps compared with some other elementary sorting methods, even though the total number of comparisons remains quadratic.
 
+In the JavaScript code, the inner loop updates the index of the current minimum, and then one final swap is done with a temporary variable after the scan finishes. Like the other elementary sorting examples, it uses direct array indexing instead of built-in helpers, which makes the actual algorithm steps very visible.
+
 ### Example/Demo
 
 ```text
@@ -247,6 +253,8 @@ That simplicity makes linear search broadly applicable. If the array is small or
 Linear search works on any unsorted or sorted array because it does not rely on any special ordering. The algorithm simply checks each value in order until it either finds the target or runs out of elements to inspect.
 
 Its best case is `O(1)` when the target appears immediately, but in the worst case it must inspect every element, which gives a runtime of `O(n)`. Even though it is not asymptotically fast, its simplicity makes it very useful for small inputs and straightforward lookup tasks.
+
+In JavaScript, this implementation is just a basic `for` loop with a strict equality check, `===`, and it returns the index of the match rather than the value itself. If nothing is found, it returns `-1`, which is the usual JavaScript-style signal that the target is not present.
 
 ### Example/Demo
 
